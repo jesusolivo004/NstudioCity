@@ -1,0 +1,347 @@
+[gd_scene load_steps=61 format=3 uid="uid://sbfhqy0d8bvm"]
+
+[ext_resource type="PackedScene" uid="uid://dfckqv2iahxa4" path="res://ESCENAS/Player.tscn" id="1_g8qqu"]
+[ext_resource type="Script" uid="uid://d1sxh7wd81afr" path="res://SCRIPTS/Player.gd" id="1_s85f2"]
+[ext_resource type="Script" uid="uid://dtxeowmkcxwde" path="res://SCRIPTS/health_component.gd" id="3_xci2e"]
+[ext_resource type="Script" uid="uid://d3hsrp48r8lfs" path="res://SCRIPTS/hitbox_component.gd" id="4_27pux"]
+[ext_resource type="Script" uid="uid://x6dvmvpiw4k5" path="res://SCRIPTS/life_bar.gd" id="5_fs6k1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s85f2"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_xci2e"]
+sky_material = SubResource("ProceduralSkyMaterial_s85f2")
+
+[sub_resource type="Environment" id="Environment_27pux"]
+background_mode = 2
+sky = SubResource("Sky_xci2e")
+tonemap_mode = 2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s85f2"]
+height = 1.78618
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3eqer"]
+animation = &"AGACHADO_A"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s85f2"]
+animation = &"CAMINAR_A"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hidji"]
+animation = &"HERIDOIDLE_A"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_di31b"]
+animation = &"HERIDO_A"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xci2e"]
+animation = &"IDLE_A"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_27pux"]
+animation = &"JUMP_A"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m3s2v"]
+animation = &"MUERTE_A"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fs6k1"]
+animation = &"RUN_A"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m3s2v"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3eqer"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hidji"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_di31b"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k1jfv"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qybk8"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r7yd4"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s85f2"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xci2e"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_27pux"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fs6k1"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n7w7v"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y0635"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0p28w"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_08fua"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_brufc"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fqklw"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2n148"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1k488"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_433ur"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rml24"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gieqt"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y7tjy"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0rpp6"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1qbmk"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mhg6t"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k14pa"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ycg0d"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rb3gy"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1qvyp"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ssbt5"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5t2ki"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3tkuk"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tjdvt"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m4sx4"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_s85f2"]
+states/AGACHADO_A/node = SubResource("AnimationNodeAnimation_3eqer")
+states/AGACHADO_A/position = Vector2(22.4093, 182)
+states/CAMINAR_A/node = SubResource("AnimationNodeAnimation_s85f2")
+states/CAMINAR_A/position = Vector2(4, 78)
+states/HERIDOIDLE_A/node = SubResource("AnimationNodeAnimation_hidji")
+states/HERIDOIDLE_A/position = Vector2(167.743, 31.3333)
+states/HERIDO_A/node = SubResource("AnimationNodeAnimation_di31b")
+states/HERIDO_A/position = Vector2(-113.591, 131.777)
+states/IDLE_A/node = SubResource("AnimationNodeAnimation_xci2e")
+states/IDLE_A/position = Vector2(180, 131.333)
+states/JUMP_A/node = SubResource("AnimationNodeAnimation_27pux")
+states/JUMP_A/position = Vector2(-104, 23.7778)
+states/MUERTE_A/node = SubResource("AnimationNodeAnimation_m3s2v")
+states/MUERTE_A/position = Vector2(358.409, 16.6667)
+states/RUN_A/node = SubResource("AnimationNodeAnimation_fs6k1")
+states/RUN_A/position = Vector2(36, 1.55555)
+states/Start/position = Vector2(333.778, 131.556)
+transitions = ["Start", "IDLE_A", SubResource("AnimationNodeStateMachineTransition_m3s2v"), "IDLE_A", "CAMINAR_A", SubResource("AnimationNodeStateMachineTransition_3eqer"), "CAMINAR_A", "IDLE_A", SubResource("AnimationNodeStateMachineTransition_hidji"), "CAMINAR_A", "JUMP_A", SubResource("AnimationNodeStateMachineTransition_di31b"), "JUMP_A", "CAMINAR_A", SubResource("AnimationNodeStateMachineTransition_k1jfv"), "CAMINAR_A", "RUN_A", SubResource("AnimationNodeStateMachineTransition_qybk8"), "RUN_A", "CAMINAR_A", SubResource("AnimationNodeStateMachineTransition_r7yd4"), "RUN_A", "JUMP_A", SubResource("AnimationNodeStateMachineTransition_s85f2"), "JUMP_A", "RUN_A", SubResource("AnimationNodeStateMachineTransition_xci2e"), "IDLE_A", "RUN_A", SubResource("AnimationNodeStateMachineTransition_27pux"), "RUN_A", "IDLE_A", SubResource("AnimationNodeStateMachineTransition_fs6k1"), "IDLE_A", "MUERTE_A", SubResource("AnimationNodeStateMachineTransition_n7w7v"), "AGACHADO_A", "CAMINAR_A", SubResource("AnimationNodeStateMachineTransition_y0635"), "CAMINAR_A", "AGACHADO_A", SubResource("AnimationNodeStateMachineTransition_0p28w"), "AGACHADO_A", "IDLE_A", SubResource("AnimationNodeStateMachineTransition_08fua"), "IDLE_A", "AGACHADO_A", SubResource("AnimationNodeStateMachineTransition_brufc"), "JUMP_A", "IDLE_A", SubResource("AnimationNodeStateMachineTransition_fqklw"), "IDLE_A", "JUMP_A", SubResource("AnimationNodeStateMachineTransition_2n148"), "CAMINAR_A", "MUERTE_A", SubResource("AnimationNodeStateMachineTransition_1k488"), "AGACHADO_A", "MUERTE_A", SubResource("AnimationNodeStateMachineTransition_433ur"), "RUN_A", "MUERTE_A", SubResource("AnimationNodeStateMachineTransition_rml24"), "JUMP_A", "MUERTE_A", SubResource("AnimationNodeStateMachineTransition_gieqt"), "IDLE_A", "HERIDO_A", SubResource("AnimationNodeStateMachineTransition_y7tjy"), "HERIDO_A", "HERIDOIDLE_A", SubResource("AnimationNodeStateMachineTransition_0rpp6"), "HERIDOIDLE_A", "HERIDO_A", SubResource("AnimationNodeStateMachineTransition_1qbmk"), "HERIDOIDLE_A", "MUERTE_A", SubResource("AnimationNodeStateMachineTransition_mhg6t"), "HERIDO_A", "MUERTE_A", SubResource("AnimationNodeStateMachineTransition_k14pa"), "AGACHADO_A", "HERIDOIDLE_A", SubResource("AnimationNodeStateMachineTransition_ycg0d"), "HERIDOIDLE_A", "AGACHADO_A", SubResource("AnimationNodeStateMachineTransition_rb3gy"), "AGACHADO_A", "HERIDO_A", SubResource("AnimationNodeStateMachineTransition_1qvyp"), "HERIDO_A", "AGACHADO_A", SubResource("AnimationNodeStateMachineTransition_ssbt5"), "HERIDO_A", "JUMP_A", SubResource("AnimationNodeStateMachineTransition_5t2ki"), "JUMP_A", "HERIDO_A", SubResource("AnimationNodeStateMachineTransition_3tkuk"), "JUMP_A", "HERIDOIDLE_A", SubResource("AnimationNodeStateMachineTransition_tjdvt"), "HERIDOIDLE_A", "JUMP_A", SubResource("AnimationNodeStateMachineTransition_m4sx4")]
+graph_offset = Vector2(-150.924, 0)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fs6k1"]
+height = 2.04464
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_27pux"]
+color = Color(0.839216, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s85f2"]
+size = Vector3(51.6302, 0.451599, 34.2309)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xci2e"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_s85f2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xci2e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fs6k1"]
+
+[node name="MUNDO" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_27pux")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" type="CharacterBody3D" parent="."]
+script = ExtResource("1_s85f2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.55379e-05, 0.931682, 0)
+shape = SubResource("CapsuleShape3D_s85f2")
+
+[node name="Pivot" type="Node3D" parent="Player"]
+
+[node name="MODELO3D" parent="Player/Pivot" instance=ExtResource("1_g8qqu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Player/Pivot/MODELO3D" index="0"]
+bones/0/rotation = Quaternion(0, 0, 8.72665e-07, 1)
+bones/1/rotation = Quaternion(0.00871404, 5.4649e-08, -8.21025e-07, 0.999962)
+bones/2/rotation = Quaternion(-0.000598388, -2.20405e-39, -5.37238e-39, 1)
+bones/3/rotation = Quaternion(-0.00811567, 2.93883e-39, 5.16592e-39, 0.999967)
+bones/4/rotation = Quaternion(0, 0, -5.87747e-39, 1)
+bones/5/rotation = Quaternion(0, 0, 5.87747e-39, 1)
+bones/9/rotation = Quaternion(-0.455759, -0.540633, 0.591925, -0.386813)
+bones/10/rotation = Quaternion(-0.0601194, -0.00882663, 0.144993, 0.987565)
+bones/11/rotation = Quaternion(-2.05379e-13, -2.32553e-11, 0.00872654, 0.999962)
+bones/12/rotation = Quaternion(-2.06745e-25, 3.23117e-27, 8.67362e-19, 1)
+bones/13/rotation = Quaternion(0.217779, 0.071303, 0.255473, 0.939267)
+bones/14/rotation = Quaternion(1.04083e-17, 6.93889e-18, 1.38778e-17, 1)
+bones/15/rotation = Quaternion(1.04083e-17, 6.93889e-18, 1.38778e-17, 1)
+bones/17/rotation = Quaternion(4.65996e-06, -2.92946e-11, -6.28645e-06, 1)
+bones/18/rotation = Quaternion(-4.65996e-06, -5.8598e-11, 1.25748e-05, 1)
+bones/19/rotation = Quaternion(-1.33714e-18, 2.77681e-20, -6.28818e-06, 1)
+bones/21/rotation = Quaternion(2.45859e-06, 1.18289e-11, 4.81124e-06, 1)
+bones/22/rotation = Quaternion(-6.72504e-06, 7.38086e-11, -1.09752e-05, 1)
+bones/23/rotation = Quaternion(4.26779e-06, 2.63065e-11, 6.16396e-06, 1)
+bones/25/rotation = Quaternion(-2.0677e-25, 0, 0, 1)
+bones/26/rotation = Quaternion(2.28821e-16, 5.82721e-20, -1.41578e-05, 1)
+bones/27/rotation = Quaternion(-2.33849e-16, -5.83431e-20, 1.41578e-05, 1)
+bones/29/rotation = Quaternion(-3.45315e-06, 3.57233e-11, -1.03451e-05, 1)
+bones/30/rotation = Quaternion(-8.27096e-06, -9.36447e-11, 1.13221e-05, 1)
+bones/31/rotation = Quaternion(1.17225e-05, -1.14518e-11, -9.76908e-07, 1)
+bones/33/rotation = Quaternion(0.455766, -0.540627, 0.591929, 0.386807)
+bones/34/rotation = Quaternion(-0.0601304, 0.0088282, -0.144992, 0.987565)
+bones/35/rotation = Quaternion(8.08832e-16, 1.69646e-13, -0.00872654, 0.999962)
+bones/36/rotation = Quaternion(0, 0, 0, 1)
+bones/37/rotation = Quaternion(0.218559, -0.0684716, -0.254808, 0.939477)
+bones/38/rotation = Quaternion(-4.91282e-05, -1.56579e-08, -2.6212e-06, 1)
+bones/39/rotation = Quaternion(7.41164e-05, -2.39945e-08, -4.00007e-06, 1)
+bones/41/rotation = Quaternion(4.36462e-17, 2.78917e-20, 6.11453e-06, 1)
+bones/42/rotation = Quaternion(1.9994e-16, -5.75627e-20, -1.19794e-05, 1)
+bones/43/rotation = Quaternion(-2.43799e-16, 2.79235e-20, 5.86472e-06, 1)
+bones/45/rotation = Quaternion(4.80423e-17, -2.21138e-20, -4.8432e-06, 1)
+bones/46/rotation = Quaternion(-2.98829e-17, 5.42324e-20, 1.18305e-05, 1)
+bones/47/rotation = Quaternion(-1.83709e-17, -3.16943e-20, -6.98753e-06, 1)
+bones/49/rotation = Quaternion(0, 0, 0, 1)
+bones/50/rotation = Quaternion(-3.20357e-17, 6.45921e-20, 1.4399e-05, 1)
+bones/51/rotation = Quaternion(3.1824e-17, -6.45899e-20, -1.43992e-05, 1)
+bones/53/rotation = Quaternion(0, 0, 0, 1)
+bones/54/rotation = Quaternion(-0.000256017, 1.0982e-22, -3.08149e-33, 1)
+bones/55/rotation = Quaternion(0.000256016, -3.72195e-22, 0, 1)
+bones/57/rotation = Quaternion(-9.55221e-09, 0.0299531, 0.999551, 8.43017e-07)
+bones/58/rotation = Quaternion(-0.0789814, 1.04628e-06, 5.64108e-08, 0.996876)
+bones/59/rotation = Quaternion(0.526998, -1.4135e-06, 1.04544e-06, 0.849866)
+bones/60/rotation = Quaternion(0.276711, 5.83897e-07, -4.27239e-07, 0.960953)
+bones/62/rotation = Quaternion(1.01814e-06, 0.029953, 0.999551, 1.69379e-06)
+bones/63/rotation = Quaternion(-0.0789813, -1.15278e-07, 1.6082e-06, 0.996876)
+bones/64/rotation = Quaternion(0.526998, 1.19264e-06, -6.58766e-07, 0.849867)
+bones/65/rotation = Quaternion(0.276715, 6.74937e-08, 4.68513e-07, 0.960952)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(0.982215, 0, 0.187759, 0, 1, 0, -0.187759, 0, 0.982215, 2.0307, 1.52983, 2.08576)
+
+[node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D"]
+transform = Transform3D(0.964303, -0.187744, 0.18674, 0.187744, -0.0125834, -0.982137, 0.18674, 0.982137, 0.0231136, 0, 0, 0)
+target_position = Vector3(0, -99.945, 0)
+debug_shape_custom_color = Color(0.803922, 0, 0, 1)
+debug_shape_thickness = 1
+
+[node name="AnimationTree" type="AnimationTree" parent="Player"]
+root_node = NodePath("../Pivot/MODELO3D")
+tree_root = SubResource("AnimationNodeStateMachine_s85f2")
+anim_player = NodePath("../Pivot/MODELO3D/AnimationPlayer")
+
+[node name="HealthComponent" type="Node" parent="Player"]
+script = ExtResource("3_xci2e")
+
+[node name="HitboxComponent" type="Area3D" parent="Player" node_paths=PackedStringArray("health_component")]
+script = ExtResource("4_27pux")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/HitboxComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0340925, 1.00673, 0)
+shape = SubResource("CapsuleShape3D_fs6k1")
+
+[node name="HUD" type="Control" parent="Player"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Player/HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -54.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Point" type="Label" parent="Player/HUD/CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "."
+
+[node name="ProgressBar" type="ProgressBar" parent="Player/HUD" node_paths=PackedStringArray("health_node")]
+modulate = Color(1, 1, 1, 0.745098)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.028125
+anchor_right = 0.296125
+anchor_bottom = 0.135
+offset_left = 454.0
+offset_top = 380.0
+offset_right = 339.48
+offset_bottom = 350.3
+scale = Vector2(2.68678, 0.732868)
+mouse_filter = 2
+theme_override_styles/fill = SubResource("StyleBoxLine_27pux")
+script = ExtResource("5_fs6k1")
+health_node = NodePath("../../HealthComponent")
+metadata/_edit_use_anchors_ = true
+
+[node name="FiltroSangre" type="ColorRect" parent="Player/HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0.494118, 0.423529, 0)
+
+[node name="SUELO" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SUELO"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.292924, -0.2742, 2.82968)
+shape = SubResource("BoxShape3D_s85f2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SUELO"]
+transform = Transform3D(25.1275, 0, 0, 0, 1, 0, 0, 0, 17.919, 0, 0, 0)
+mesh = SubResource("PlaneMesh_xci2e")
+
+[node name="CUBO" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CUBO"]
+transform = Transform3D(1.42486, 0, 0, 0, 1, 0, 0, 0, 1.19784, 0, 0.661755, 3.85042)
+mesh = SubResource("BoxMesh_s85f2")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="CUBO/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CUBO/MeshInstance3D/RigidBody3D"]
+shape = SubResource("BoxShape3D_xci2e")
+
+[node name="Area3D" type="Area3D" parent="CUBO/MeshInstance3D"]
+script = ExtResource("3_xci2e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CUBO/MeshInstance3D/Area3D"]
+shape = SubResource("BoxShape3D_fs6k1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CUBO"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0213051, -0.241638, 0.242126)
+shape = SubResource("BoxShape3D_s85f2")
+
+[editable path="Player/Pivot/MODELO3D"]

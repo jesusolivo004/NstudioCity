@@ -1,0 +1,128 @@
+[gd_scene load_steps=33 format=3 uid="uid://dfckqv2iahxa4"]
+
+[ext_resource type="PackedScene" uid="uid://ca1nl7h08nsvp" path="res://MODELOS/MODELO3D.fbx" id="1_bj61o"]
+[ext_resource type="Animation" uid="uid://yi0mgcx7cjgv" path="res://ANIMACIONES/AGACHADO_A.res" id="2_4ul0b"]
+[ext_resource type="Animation" uid="uid://caw8s16wlqqwp" path="res://ANIMACIONES/CAERDELCIELO_A.res" id="3_cvgk6"]
+[ext_resource type="Animation" uid="uid://c4a7oipcq7ld2" path="res://ANIMACIONES/CAMINARAGACHADO_A.res" id="4_o7l3y"]
+[ext_resource type="Animation" uid="uid://d0agi0fq3br8a" path="res://ANIMACIONES/CAMINARCONAIM_A.res" id="5_2fvsx"]
+[ext_resource type="Animation" uid="uid://sjfvfpel78a7" path="res://ANIMACIONES/CAMINAR_A.res" id="6_ejsge"]
+[ext_resource type="Animation" uid="uid://dvfao6u8rjl4b" path="res://ANIMACIONES/CURACIONBEBIENDOALGO_A.res" id="7_8t0vr"]
+[ext_resource type="Animation" uid="uid://n4hstuws1jd8" path="res://ANIMACIONES/EQUIPARYDESAQUIPAR_A.res" id="8_e60yi"]
+[ext_resource type="Animation" uid="uid://dq4q2hj03j52s" path="res://ANIMACIONES/FIREAGACHADO_A.res" id="9_o541m"]
+[ext_resource type="Animation" uid="uid://eq0errkah1v3" path="res://ANIMACIONES/FIREIDLE_A.res" id="10_itrii"]
+[ext_resource type="Animation" uid="uid://bxl785o5avr3f" path="res://ANIMACIONES/GUARDARARMAPISTOLA_A.res" id="11_sdqvi"]
+[ext_resource type="Animation" uid="uid://ct1lbh2sokokw" path="res://ANIMACIONES/HERIDOIDLE_A.res" id="12_pf1wu"]
+[ext_resource type="Animation" uid="uid://dx4amtbldl5bj" path="res://ANIMACIONES/HERIDO_A.res" id="13_skpod"]
+[ext_resource type="Animation" uid="uid://cmf5kkyng7h2k" path="res://ANIMACIONES/IDLEAIMAGACHADO_A.res" id="14_wm7mg"]
+[ext_resource type="Animation" uid="uid://5bjipweh67li" path="res://ANIMACIONES/IDLEAIM_A.res" id="15_370fw"]
+[ext_resource type="Animation" uid="uid://ccv0x2t5k3sfr" path="res://ANIMACIONES/IDLE_A.res" id="16_13gjd"]
+[ext_resource type="Animation" uid="uid://dv3il5jct6wln" path="res://ANIMACIONES/JUMP_A.res" id="17_2inb2"]
+[ext_resource type="Animation" uid="uid://dra7fx8km3gf2" path="res://ANIMACIONES/LEFTTURN90_A.res" id="18_2j6m7"]
+[ext_resource type="Animation" uid="uid://ddio1j6rrh461" path="res://ANIMACIONES/LEVANTARSEDECAERDELCIELO_A.res" id="19_ej086"]
+[ext_resource type="Animation" uid="uid://6em1cdsc2biw" path="res://ANIMACIONES/MUERTE_A.res" id="20_xpn8n"]
+[ext_resource type="Animation" uid="uid://bbu8b4uqjx5am" path="res://ANIMACIONES/PUNCH1_A.res" id="21_03y1e"]
+[ext_resource type="Animation" uid="uid://dpe2qldhoxdna" path="res://ANIMACIONES/PUNCH_A.res" id="22_srvhr"]
+[ext_resource type="Animation" uid="uid://du6vhnsj7f37n" path="res://ANIMACIONES/REACTION_A.res" id="23_r7ga0"]
+[ext_resource type="Animation" uid="uid://bi0yw3s1ruf4g" path="res://ANIMACIONES/RECARGANDO_A.res" id="24_fde4o"]
+[ext_resource type="Animation" uid="uid://6kfxy4s3lqr0" path="res://ANIMACIONES/RIGHTTURN90_A.res" id="25_f16c1"]
+[ext_resource type="Animation" uid="uid://byxcbk2tw4vts" path="res://ANIMACIONES/RUN_A.res" id="26_xtt4e"]
+[ext_resource type="Animation" uid="uid://dm12743y685jw" path="res://ANIMACIONES/SENTADO_A.res" id="27_yk88d"]
+[ext_resource type="Animation" uid="uid://dbyns0f405ga" path="res://ANIMACIONES/MICHAELE_A.res" id="28_eubol"]
+[ext_resource type="Animation" uid="uid://bds6x3dkd18la" path="res://ANIMACIONES/SISEÑOR_A.res" id="29_mgcct"]
+[ext_resource type="Animation" uid="uid://b65h2vjoa5mor" path="res://ANIMACIONES/CAIDADURAMUCHAO_A.res" id="30_o7l3y"]
+[ext_resource type="Animation" uid="uid://dlkn3v8hltu15" path="res://ANIMACIONES/RUNTODIVE_A.res" id="31_2fvsx"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ul0b"]
+_data = {
+&"AGACHADO_A": ExtResource("2_4ul0b"),
+&"CAERDELCIELO_A": ExtResource("3_cvgk6"),
+&"CAIDADURAMUCHAO_A": ExtResource("30_o7l3y"),
+&"CAMINARAGACHADO_A": ExtResource("4_o7l3y"),
+&"CAMINARCONAIM_A": ExtResource("5_2fvsx"),
+&"CAMINAR_A": ExtResource("6_ejsge"),
+&"CURACIONBEBIENDOALGO_A": ExtResource("7_8t0vr"),
+&"EQUIPARYDESAQUIPAR_A": ExtResource("8_e60yi"),
+&"FIREAGACHADO_A": ExtResource("9_o541m"),
+&"FIREIDLE_A": ExtResource("10_itrii"),
+&"GUARDARARMAPISTOLA_A": ExtResource("11_sdqvi"),
+&"HERIDOIDLE_A": ExtResource("12_pf1wu"),
+&"HERIDO_A": ExtResource("13_skpod"),
+&"IDLEAIMAGACHADO_A": ExtResource("14_wm7mg"),
+&"IDLEAIM_A": ExtResource("15_370fw"),
+&"IDLE_A": ExtResource("16_13gjd"),
+&"JUMP_A": ExtResource("17_2inb2"),
+&"LEFTTURN90_A": ExtResource("18_2j6m7"),
+&"LEVANTARSEDECAERDELCIELO_A": ExtResource("19_ej086"),
+&"MICHAELE_A": ExtResource("28_eubol"),
+&"MUERTE_A": ExtResource("20_xpn8n"),
+&"PUNCH1_A": ExtResource("21_03y1e"),
+&"PUNCH_A": ExtResource("22_srvhr"),
+&"REACTION_A": ExtResource("23_r7ga0"),
+&"RECARGANDO_A": ExtResource("24_fde4o"),
+&"RIGHTTURN90_A": ExtResource("25_f16c1"),
+&"RUNTODIVE_A": ExtResource("31_2fvsx"),
+&"RUN_A": ExtResource("26_xtt4e"),
+&"SENTADO_A": ExtResource("27_yk88d"),
+&"SISEÑOR_A": ExtResource("29_mgcct")
+}
+
+[node name="MODELO3D" instance=ExtResource("1_bj61o")]
+
+[node name="Skeleton3D" parent="." index="0"]
+bones/0/rotation = Quaternion(0.992761, 0.0358547, 0.0588207, 0.098391)
+bones/1/rotation = Quaternion(-0.0534297, 0.0168303, 0.0472104, 0.997313)
+bones/2/rotation = Quaternion(-0.106374, -0.00324758, -0.00872438, 0.994283)
+bones/3/rotation = Quaternion(-0.113787, 0.000701124, 0.00693412, 0.993481)
+bones/4/rotation = Quaternion(0.0462703, 0.00985927, -0.0600547, 0.997073)
+bones/5/rotation = Quaternion(-0.0101676, -0.114239, 0.0376173, 0.992689)
+bones/9/rotation = Quaternion(-0.36399, -0.590208, 0.298127, -0.655962)
+bones/10/rotation = Quaternion(-0.151279, -0.574886, 0.280754, 0.753524)
+bones/11/rotation = Quaternion(1.13329e-08, 4.01249e-08, 0.284221, 0.958759)
+bones/12/rotation = Quaternion(-0.205595, -0.00600985, 0.0154431, 0.978497)
+bones/13/rotation = Quaternion(0.159989, 0.0423843, 0.311125, 0.935846)
+bones/14/rotation = Quaternion(0.0145962, 3.88635e-08, -0.121956, 0.992428)
+bones/15/rotation = Quaternion(-0.13098, 2.32586e-08, -0.00747307, 0.991357)
+bones/17/rotation = Quaternion(0.0270968, 1.26456e-05, -0.0229293, 0.99937)
+bones/18/rotation = Quaternion(0, 0, 0, 1)
+bones/19/rotation = Quaternion(0.000610382, -7.71592e-09, -6.2547e-05, 1)
+bones/21/rotation = Quaternion(0.0270968, 1.26455e-05, -0.0229293, 0.99937)
+bones/22/rotation = Quaternion(0.0002603, -7.03101e-09, -2.66645e-05, 1)
+bones/23/rotation = Quaternion(-0.00194704, -3.09506e-08, 0.00019948, 0.999998)
+bones/25/rotation = Quaternion(0.0270968, 1.26456e-05, -0.0229293, 0.99937)
+bones/26/rotation = Quaternion(0.000719764, -2.96604e-08, -7.38102e-05, 1)
+bones/27/rotation = Quaternion(-0.00322468, 5.14861e-08, 0.00033034, 0.999995)
+bones/29/rotation = Quaternion(0.0270968, 1.26456e-05, -0.0229293, 0.99937)
+bones/30/rotation = Quaternion(0.00149736, -9.9323e-08, -0.000153508, 0.999999)
+bones/31/rotation = Quaternion(-0.0079256, -9.50337e-09, 0.00081194, 0.999968)
+bones/33/rotation = Quaternion(0.335483, -0.543521, 0.323816, 0.697982)
+bones/34/rotation = Quaternion(-0.14695, 0.626218, -0.37733, 0.666243)
+bones/35/rotation = Quaternion(1.45663e-08, 1.96427e-08, -0.212828, 0.97709)
+bones/36/rotation = Quaternion(-0.0300268, -0.100254, -0.0900256, 0.990426)
+bones/37/rotation = Quaternion(0.160839, -0.034781, -0.329084, 0.929852)
+bones/38/rotation = Quaternion(0.00954631, -3.69109e-08, 0.139053, 0.990239)
+bones/39/rotation = Quaternion(-0.128194, -8.97762e-09, 0.0626438, 0.989769)
+bones/41/rotation = Quaternion(0.0210353, -9.52844e-06, 0.0211804, 0.999554)
+bones/42/rotation = Quaternion(0.0436213, -4.84903e-09, 0.00355023, 0.999042)
+bones/43/rotation = Quaternion(-0.01066, -1.67695e-08, -0.000867659, 0.999943)
+bones/45/rotation = Quaternion(0.0210353, -9.52842e-06, 0.0211804, 0.999554)
+bones/46/rotation = Quaternion(0.031184, -3.56834e-08, 0.00253812, 0.99951)
+bones/47/rotation = Quaternion(-0.0279169, 6.88673e-08, -0.00227222, 0.999608)
+bones/49/rotation = Quaternion(0.0210353, -9.52844e-06, 0.0211804, 0.999554)
+bones/50/rotation = Quaternion(0.0238354, 9.84525e-09, 0.00194001, 0.999714)
+bones/51/rotation = Quaternion(-0.0360639, 8.73214e-08, -0.00293528, 0.999345)
+bones/53/rotation = Quaternion(0.0210353, -9.52844e-06, 0.0211804, 0.999554)
+bones/54/rotation = Quaternion(5.26488e-08, -2.85476e-08, 1.39951e-08, 1)
+bones/55/rotation = Quaternion(-0.0435353, -7.83416e-10, -0.00354332, 0.999046)
+bones/57/rotation = Quaternion(0.0723846, 0.133084, 0.987419, -0.0453131)
+bones/58/rotation = Quaternion(-0.235581, -0.0837372, -0.011238, 0.968175)
+bones/59/rotation = Quaternion(0.183368, -0.0215833, -0.0446337, 0.981793)
+bones/60/rotation = Quaternion(0.226364, 1.23993e-06, -6.30639e-07, 0.974043)
+bones/62/rotation = Quaternion(-0.0415689, 0.247382, 0.967743, -0.0234241)
+bones/63/rotation = Quaternion(-0.258108, 0.0872843, -0.00400944, 0.962157)
+bones/64/rotation = Quaternion(0.221647, 0.0103841, 0.00172087, 0.97507)
+bones/65/rotation = Quaternion(0.254193, 2.649e-07, 7.89296e-07, 0.967154)
+
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_4ul0b")
+}

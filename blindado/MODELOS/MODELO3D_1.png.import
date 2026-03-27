@@ -1,0 +1,37 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://spty01wga3ot"
+path="res://.godot/imported/MODELO3D_1.png-bdb8dc00e6d54e7b8f1ef8793b58bfff.ctex"
+metadata={
+"vram_texture": false
+}
+generator_parameters={
+"md5": "d1e75b9127fd96988b264913f2c355b8"
+}
+
+[deps]
+
+source_file="res://MODELOS/MODELO3D_1.png"
+dest_files=["res://.godot/imported/MODELO3D_1.png-bdb8dc00e6d54e7b8f1ef8793b58bfff.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1
