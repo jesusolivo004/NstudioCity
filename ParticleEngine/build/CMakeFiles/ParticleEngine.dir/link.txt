@@ -1,0 +1,3 @@
+"G:\Cosas de windows 10\MSYS2\ucrt64\bin\cmake.exe" -E rm -f CMakeFiles\ParticleEngine.dir/objects.a
+G:\COSASD~1\MSYS2\ucrt64\bin\ar.exe qc CMakeFiles\ParticleEngine.dir/objects.a @CMakeFiles\ParticleEngine.dir\objects1.rsp
+G:\COSASD~1\MSYS2\ucrt64\bin\C__~1.EXE -Wl,--whole-archive CMakeFiles\ParticleEngine.dir/objects.a -Wl,--no-whole-archive -o ParticleEngine.exe -Wl,--out-implib,libParticleEngine.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\ParticleEngine.dir\linkLibs.rsp

@@ -1,0 +1,10 @@
+CMakeFiles/ParticleEngine.dir/src/main.cpp.obj: \
+ C:\Users\Usuario\Documents\ParticleEngine\src\main.cpp \
+ G:/Cosas\ de\ windows\ 10/MSYS2/ucrt64/include/raylib.h \
+ G:/Cosas\ de\ windows\ 10/MSYS2/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdarg.h \
+ G:/Cosas\ de\ windows\ 10/MSYS2/ucrt64/include/stdarg.h \
+ G:/Cosas\ de\ windows\ 10/MSYS2/ucrt64/include/_mingw_stdarg.h \
+ G:/Cosas\ de\ windows\ 10/MSYS2/ucrt64/include/vadefs.h \
+ G:/Cosas\ de\ windows\ 10/MSYS2/ucrt64/include/_mingw.h \
+ G:/Cosas\ de\ windows\ 10/MSYS2/ucrt64/include/_mingw_mac.h \
+ G:/Cosas\ de\ windows\ 10/MSYS2/ucrt64/include/_mingw_secapi.h
