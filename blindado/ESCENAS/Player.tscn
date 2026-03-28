@@ -69,6 +69,7 @@ _data = {
 [node name="MODELO3D" instance=ExtResource("1_bj61o")]
 
 [node name="Skeleton3D" parent="." index="0"]
+bones/0/position = Vector3(0.0040256, 1.05762, 0.00118346)
 bones/0/rotation = Quaternion(0.159098, -0.12019, 0.00583161, 0.979902)
 bones/1/rotation = Quaternion(0.0628816, 0.0555355, -0.0138669, 0.996378)
 bones/2/rotation = Quaternion(0.0344788, 0.0230516, -0.000222562, 0.99914)

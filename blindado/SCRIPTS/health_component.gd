@@ -1,21 +1,25 @@
 extends Node
-class_name HealthComponent
+class_name HealthManager
 
-# Estas señales avisan al Player y a la Barra de Vida
-signal on_death
-signal on_health_changed(current_health)
+signal al_morir
+signal al_cambiar_salud(nueva_vida)
+signal al_herirse(esta_herido) # Nueva: avisa si la vida es menor al 25%
 
 @export var max_health: float = 100.0
 @onready var current_health: float = max_health
 
-func take_damage(amount: float):
-	current_health -= amount
-	on_health_changed.emit(current_health) # Avisa a los demás
+func recibir_daño(cantidad: float):
+	current_health -= cantidad
+	al_cambiar_salud.emit(current_health)
+	
+	# Avisar si está en estado crítico (para animaciones de herido)
+	al_herirse.emit(current_health <= 25.0)
 	
 	if current_health <= 0:
-		on_death.emit() # Avisa que murió
-		print("Entidad sin vida.")
+		al_morir.emit()
+		print("Entidad eliminada.")
 
-func heal(amount: float):
-	current_health = min(current_health + amount, max_health)
-	on_health_changed.emit(current_health)
+func curar(cantidad: float):
+	current_health = min(current_health + cantidad, max_health)
+	al_cambiar_salud.emit(current_health)
+	al_herirse.emit(current_health <= 25.0)

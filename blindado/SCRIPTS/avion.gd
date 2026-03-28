@@ -8,7 +8,7 @@ extends Node3D
 @export var velocidad_vuelo: float = 20.0
 var ultima_posicion: Vector3
 var tiempo_motores: float = 30.0
-var tiempo_vuelo_total: float = 300.0 
+var tiempo_vuelo_total: float = 150.0 
 var esta_girando: bool = true
 var en_vuelo: bool = true
 

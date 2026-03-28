@@ -1,14 +1,16 @@
-[gd_scene load_steps=84 format=3 uid="uid://b38lphxttokfm"]
+[gd_scene load_steps=86 format=3 uid="uid://b38lphxttokfm"]
 
 [ext_resource type="Script" uid="uid://d1sxh7wd81afr" path="res://SCRIPTS/Player.gd" id="1_cobsy"]
 [ext_resource type="PackedScene" uid="uid://dfckqv2iahxa4" path="res://ESCENAS/Player.tscn" id="2_ym64f"]
+[ext_resource type="Script" uid="uid://twvi277kolji" path="res://SCRIPTS/CameraManager.gd" id="3_0w5ml"]
+[ext_resource type="Script" uid="uid://bmpfyt4rt7r6h" path="res://SCRIPTS/AnimationHandler.gd" id="3_cpxu5"]
 [ext_resource type="Script" uid="uid://dtxeowmkcxwde" path="res://SCRIPTS/health_component.gd" id="3_ixuxg"]
 [ext_resource type="Script" uid="uid://d3hsrp48r8lfs" path="res://SCRIPTS/hitbox_component.gd" id="4_4ud36"]
-[ext_resource type="Script" uid="uid://x6dvmvpiw4k5" path="res://SCRIPTS/life_bar.gd" id="5_fjcof"]
 [ext_resource type="Script" uid="uid://00poge5mg8hj" path="res://SCRIPTS/caja_loot.gd" id="6_fjcof"]
 [ext_resource type="PackedScene" uid="uid://cfl8wm7oldyqw" path="res://MODELOS/AVION.fbx" id="6_ym64f"]
 [ext_resource type="Script" uid="uid://dduorsf4gr8xb" path="res://SCRIPTS/avion.gd" id="7_ixuxg"]
 [ext_resource type="AudioStream" uid="uid://dlnvs860f6bq6" path="res://AUDIO/Helicopter engine shutdown on ground - Sound Effects - Royalty Free.mp3" id="8_4ud36"]
+[ext_resource type="Script" uid="uid://0uqfhh5p10mw" path="res://SCRIPTS/HUDManager.gd" id="11_pr5ur"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s85f2"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -196,7 +198,7 @@ graph_offset = Vector2(-167.761, 0)
 height = 2.04464
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s85f2"]
-size = Vector3(51.6302, 0.451599, 34.2309)
+size = Vector3(155.282, 0.451599, 225.808)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xci2e"]
 
@@ -226,9 +228,13 @@ environment = SubResource("Environment_27pux")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8307, 150.881, 11.9495)
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("hud_manager", "anim_handler", "cam_manager", "health_manager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8307, 328.862, 11.9495)
 script = ExtResource("1_cobsy")
+hud_manager = NodePath("../HUD")
+anim_handler = NodePath("AnimationTree")
+cam_manager = NodePath("Camera3D")
+health_manager = NodePath("HealthComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.55379e-05, 0.931682, 0)
@@ -240,6 +246,7 @@ shape = SubResource("CapsuleShape3D_s85f2")
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Player/Pivot/MODELO3D" index="0"]
+bones/0/position = Vector3(8.50407e-08, 1.14471, -0.00971703)
 bones/0/rotation = Quaternion(0, 0, 8.72665e-07, 1)
 bones/1/rotation = Quaternion(0.00871404, 5.4649e-08, -8.21025e-07, 0.999962)
 bones/2/rotation = Quaternion(-0.000598388, -2.20405e-39, -5.37238e-39, 1)
@@ -293,8 +300,10 @@ bones/63/rotation = Quaternion(-0.0789813, -1.15278e-07, 1.6082e-06, 0.996876)
 bones/64/rotation = Quaternion(0.526998, 1.19264e-06, -6.58766e-07, 0.849867)
 bones/65/rotation = Quaternion(0.276715, 6.74937e-08, 4.68513e-07, 0.960952)
 
-[node name="Camera3D" type="Camera3D" parent="Player"]
+[node name="Camera3D" type="Camera3D" parent="Player" node_paths=PackedStringArray("player")]
 transform = Transform3D(0.982215, 0, 0.187759, 0, 1, 0, -0.187759, 0, 0.982215, 2.0307, 1.52983, 2.08576)
+script = ExtResource("3_0w5ml")
+player = NodePath("..")
 
 [node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D"]
 transform = Transform3D(0.964303, -0.187744, 0.18674, 0.187744, -0.0125834, -0.982137, 0.18674, 0.982137, 0.0231136, 0, 0, 0)
@@ -302,10 +311,12 @@ target_position = Vector3(0, -500, 0)
 debug_shape_custom_color = Color(0.803922, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="AnimationTree" type="AnimationTree" parent="Player"]
+[node name="AnimationTree" type="AnimationTree" parent="Player" node_paths=PackedStringArray("anim_tree")]
 root_node = NodePath("../Pivot/MODELO3D")
 tree_root = SubResource("AnimationNodeStateMachine_s85f2")
 anim_player = NodePath("../Pivot/MODELO3D/AnimationPlayer")
+script = ExtResource("3_cpxu5")
+anim_tree = NodePath(".")
 
 [node name="HealthComponent" type="Node" parent="Player"]
 script = ExtResource("3_ixuxg")
@@ -321,11 +332,11 @@ shape = SubResource("CapsuleShape3D_fs6k1")
 [node name="SUELO" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SUELO"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.292924, -0.2742, 2.82968)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20034, -0.2742, -0.0928268)
 shape = SubResource("BoxShape3D_s85f2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SUELO"]
-transform = Transform3D(25.1275, 0, 0, 0, 1, 0, 0, 0, 17.919, 0, 0, 0)
+transform = Transform3D(75.8194, 0, 0, 0, 1, 0, 0, 0, 112.434, 0, 0, 0)
 mesh = SubResource("PlaneMesh_xci2e")
 
 [node name="CUBO" type="StaticBody3D" parent="."]
@@ -358,12 +369,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.661755, 3.85042)
 shape = SubResource("BoxShape3D_cpxu5")
 
 [node name="AVION" parent="." node_paths=PackedStringArray("motor_1", "motor_2", "sonido_motor") instance=ExtResource("6_ym64f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8307, 150, 12.8062)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8307, 327.981, 12.8062)
 script = ExtResource("7_ixuxg")
 motor_1 = NodePath("CONECTADOAVION")
 motor_2 = NodePath("CONECTADOAVION_001")
 sonido_motor = NodePath("AudioStreamPlayer3D")
 velocidad_giro = 12.0
+velocidad_vuelo = 35.0
 
 [node name="CONECTADOAVION_001" parent="AVION" index="2"]
 transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, -0.0730895, 7.7766, -12.3389)
@@ -430,7 +442,9 @@ unit_size = 5.93
 max_distance = 20.0
 parameters/looping = false
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("health_manager")]
+script = ExtResource("11_pr5ur")
+health_manager = NodePath("../Player/HealthComponent")
 
 [node name="Inventario" type="Panel" parent="HUD"]
 visible = false
@@ -478,9 +492,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(1, 0.494118, 0.423529, 0)
+color = Color(0.768627, 0.027451, 0, 0.117647)
 
-[node name="ProgressBar" type="ProgressBar" parent="HUD" node_paths=PackedStringArray("health_node")]
+[node name="ProgressBar" type="ProgressBar" parent="HUD"]
 modulate = Color(1, 1, 1, 0.745098)
 anchors_preset = -1
 anchor_left = 0.028125
@@ -493,9 +507,24 @@ offset_bottom = 350.3
 scale = Vector2(2.68678, 0.732868)
 mouse_filter = 2
 theme_override_styles/fill = SubResource("StyleBoxLine_27pux")
-script = ExtResource("5_fjcof")
-health_node = NodePath("../../Player/HealthComponent")
 metadata/_edit_use_anchors_ = true
+
+[node name="AlertaSalto" type="Label" parent="HUD"]
+modulate = Color(1, 0.0196078, 0.152941, 1)
+self_modulate = Color(0.919306, 0, 0.420292, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = -37.0
+offset_right = 184.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.862498, 1.90412)
+text = "¡PELIGRO! PRESIONA [E] PARA FRENAR"
 
 [editable path="Player/Pivot/MODELO3D"]
 [editable path="AVION"]
