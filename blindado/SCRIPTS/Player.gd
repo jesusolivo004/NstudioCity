@@ -11,8 +11,9 @@ extends CharacterBody3D
 @export var anim_handler: AnimationHandler
 @export var cam_manager: CameraManager
 @export var health_manager: HealthManager
+@export var interact_manager: InteractionManager # <--- NUEVO: Arrastra el nodo aquí
 
-# --- 2. VARIABLES DE ESTADO ---
+# --- 2. VARIABLES DE ESTADO (Mantenidas todas) ---
 var esta_agachado: bool = false
 var esta_herido: bool = false
 var esta_muriendo: bool = false
@@ -25,7 +26,7 @@ var agachado_activado: bool = false
 var esta_levantandose: bool = false
 var esta_corriendo: bool = false
 
-# --- 3. CONFIGURACIÓN TÉCNICA ---
+# --- 3. CONFIGURACIÓN TÉCNICA (Mantenida) ---
 var max_fall_height: float = 0.0
 const SPEED_WALK = 5.0
 const SPEED_RUN = 10.0
@@ -44,19 +45,25 @@ func _ready():
 	if anim:
 		anim.animation_finished.connect(_on_animation_finished)
 	
-	# Conexión profesional con el nuevo HealthManager
 	if health_manager:
 		health_manager.al_morir.connect(func(): esta_muriendo = true)
 		health_manager.al_herirse.connect(func(valor): esta_herido = valor)
 
-# --- 5. CONTROL DE CÁMARA ---
+# --- 5. ENTRADAS ---
 func _unhandled_input(event):
 	if cam_manager:
 		cam_manager.manejar_entrada(event)
+
 func _input(event):
-	if event.is_action_pressed("tecla_inventario"): # Define esta tecla en ajustes
+# Dentro del _input(event) en Player.gd
+	if event.is_action_pressed("tecla_inventario"): # Tu tecla TAB
 		var estado = !hud_manager.inventario.visible
-		hud_manager.mostrar_inventario(estado)
+		hud_manager.mostrar_inventario_solo_jugador(estado)
+	# En el _input del Player.gd
+	if event.is_action_pressed("tecla_interaccion"):
+	# Solo intentamos interactuar si el Manager detectó un objeto válido previamente
+		if interact_manager and interact_manager.objeto_actual != null:
+			interact_manager.intentar_interactuar()
 
 # --- 6. BUCLE PRINCIPAL ---
 func _physics_process(delta):
@@ -67,62 +74,48 @@ func _physics_process(delta):
 		
 	actualizar_logica_salud_y_stamina(delta)
 
-# --- Lógica de gravedad (Manual: E para sobrevivir) ---
+	# Lógica de gravedad (Tu lógica original intacta)
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-		
-		# Lanzamos el RayCast para medir la distancia al suelo
 		raycast.force_raycast_update()
 		if raycast.is_colliding():
 			var punto_colision = raycast.get_collision_point()
 			var distancia = global_position.distance_to(punto_colision)
 			
-			# CONTROL DE LA ALERTA (Entre 190 y 50 de altura)
 			if hud_manager:
 				if distancia <= 222.0 and distancia > 70.0 and not aterrizaje_suave:
 					hud_manager.mostrar_alerta_proximidad(true)
 				else:
 					hud_manager.mostrar_alerta_proximidad(false)
 
-			# ACTIVACIÓN MANUAL CON E
 			if Input.is_key_pressed(KEY_E) and distancia <= 190.0:
 				aterrizaje_suave = true
-				velocity.y = max(velocity.y, -5.0) # Caída controlada
+				velocity.y = max(velocity.y, -5.0) 
 				if anim_tree:
 					anim_tree.get("parameters/playback").travel("CAERDELCIELO_A")
 		else:
-			# Si suelta la E en el aire, vuelve a caer en picada
 			aterrizaje_suave = false
 		
-		# Registro de altura máxima para el cálculo de daño
 		if global_position.y > max_fall_height:
 			max_fall_height = global_position.y
-			
 	else:
-		# --- LÓGICA AL TOCAR EL SUELO ---
 		if max_fall_height > 0.0:
 			var fall_distance = max_fall_height - global_position.y
-			
-			# Si llega al suelo y NO estaba frenando con la E...
 			if not aterrizaje_suave and fall_distance >= 18.0:
-				# Daño masivo (muerte casi segura desde 584m)
-				health_manager.recibir_daño((fall_distance - 12.0) * 2.5)
-			elif aterrizaje_suave:
-				# Si aterrizó con la E, solo un pequeño impacto visual o nada
-				print("Aterrizaje seguro")
-
-		# Resetear estados al tocar tierra
+				var daño = (fall_distance - 12.0) * 2.5
+				health_manager.recibir_daño(daño)
+				if hud_manager:
+					var fuerza_sangre = clamp(daño / 100.0, 0.4, 1.0)
+					hud_manager.efecto_impacto_sangre(fuerza_sangre)
 		max_fall_height = 0.0
 		aterrizaje_suave = false
-	# Salto
+
 	if Input.is_action_just_pressed("ui_select") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Movimiento
 	procesar_teclas_acciones()
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
-	# Usamos la rotación de la cámara para la dirección
 	var forward = cam_manager.global_transform.basis.z
 	var right = cam_manager.global_transform.basis.x
 	var move_dir = (forward * input_dir.y + right * input_dir.x)
@@ -136,7 +129,6 @@ func _physics_process(delta):
 		
 		velocity.x = lerp(velocity.x, move_dir.x * current_speed, LERP_VAL)
 		velocity.z = lerp(velocity.z, move_dir.z * current_speed, LERP_VAL)
-		
 		pivot.rotation.y = lerp_angle(pivot.rotation.y, atan2(-move_dir.x, -move_dir.z), LERP_VAL)
 	else:
 		velocity.x = lerp(velocity.x, 0.0, LERP_VAL)
@@ -144,16 +136,20 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-	# Comunicación con los managers
 	if cam_manager:
 		cam_manager.actualizar_posicion(delta, velocity.length(), esta_apuntando)
 	if anim_handler:
 		anim_handler.actualizar_animaciones(self, move_dir, delta)
+	
+	# NUEVO: El Manager revisa si hay algo interactuable cada frame
+	if interact_manager:
+		interact_manager.manejar_interaccion(delta)
 
+# --- 7. FUNCIONES DE APOYO (Originales) ---
 func procesar_teclas_acciones():
 	esta_corriendo = Input.is_key_pressed(KEY_SHIFT) and not cansado
 	esta_agachado = Input.is_key_pressed(KEY_C)
-	esta_apuntando = Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) # Ejemplo
+	esta_apuntando = Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)
 
 func actualizar_logica_salud_y_stamina(delta):
 	if esta_corriendo and velocity.length() > 1.0:
